@@ -5,7 +5,7 @@
  
       - sudo apt install ntfs-3g fuse
       - sudo ntfsfix /dev/sda2
-      - sudo mount -o rw -t ntfs /dev/sda2 /media/ashischhetri/Media
+      - sudo mount -o rw -t ntfs /dev/sda2 /media/Mount/Media
 
 #Screenshots
 
