@@ -24,5 +24,5 @@
 -git push -u origin main
 
 # Screenshot
-![](/images/gitUpload.png)
+![](/Images/gitUpload.png)
 
