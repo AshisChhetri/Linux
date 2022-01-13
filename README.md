@@ -10,3 +10,19 @@
 #Screenshots
 
 ![](/linux/mounting2.png)
+
+
+---
+
+# 2.To Upload File in Git hub..
+
+-git init
+-git add README.md
+-git commit -m "first commit"
+-git branch -M main
+-git remote add origin https://github.com/username/repo-name.git
+-git push -u origin main
+
+# Screenshot
+![](/images/gitUpload.png)
+
