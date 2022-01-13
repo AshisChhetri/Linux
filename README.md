@@ -17,7 +17,7 @@
 # 2.To Upload File in Git hub..
 - Steps:
   - git init
-  - git add README.md
+  - git add filename.type
   - git commit -m "first commit"
   - git branch -M main
   - git remote add origin https://github.com/username/repo-name.git
