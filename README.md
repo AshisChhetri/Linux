@@ -15,7 +15,7 @@
 ---
 
 # 2.To Upload File in Git hub..
-
+Steps:
 -git init
 -git add README.md
 -git commit -m "first commit"
