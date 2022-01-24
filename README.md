@@ -26,3 +26,8 @@
 # Screenshot
 ![](/Images/gitUpload.png)
 
+# 3.To Install and Setup Flutter in Linux....
+- Steps :
+  - Extract the file in the desired location : <strong> tar xf ~/Downloads/flutter_linux_2.8.1-stable.tar.xz </strong>
+  - Add the flutter tool to your path: <strong> export PATH="$PATH:`pwd`/flutter/bin"  </strong>
+  - Optionally, pre-download development binaries: <strong> flutter precache </strong>
