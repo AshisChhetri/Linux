@@ -33,3 +33,9 @@
   - And Run : <strong> export PATH="$PATH:`pwd`/flutter/bin" </strong>
   - Add the flutter tool to your path: <strong> export PATH="$PATH:`pwd`/flutter/bin"  </strong>
   - Optionally, pre-download development binaries: <strong> flutter precache </strong>
+
+
+# 4.To Remove And Order boot entry in Linux Using efibootmgr....
+- Steps :
+  - To Arrange: <strong> efibootmgr -o 0000,0002,0003,0001 </strong>
+  - To delete: <strong> efibootmgr -b[4_digitcode_of_boot_entry] -B </strong>
