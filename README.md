@@ -37,5 +37,6 @@
 
 # 4.To Remove And Order boot entry in Linux Using efibootmgr....
 - Steps :
+  - To Display Details : <strong> efibootmgr -v </strong>
   - To Arrange: <strong> efibootmgr -o 0000,0002,0003,0001 </strong>
   - To delete: <strong> efibootmgr -b[4_digitcode_of_boot_entry] -B </strong>
