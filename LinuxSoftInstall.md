@@ -307,6 +307,8 @@ how-to-install-python-on-ubuntu-linux-system/
 <!-- ############################################################# -->
 - [X]  select
 - [ ] unselect
+- 1
+- 1.
 
 
     
