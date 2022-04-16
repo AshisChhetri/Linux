@@ -9,7 +9,7 @@
 
 #Screenshots
 
-![](/linux/mounting2.png)
+![](/Images/mounting2.png)
 
 
 ---
