@@ -58,7 +58,7 @@
     shrink desired=100 (Shrink the selected partition by 100MB.)
     ```
 
-- 3. Run the following commands to create the EFI system partition with the unallocated space:
+- 3 : Run the following commands to create the EFI system partition with the unallocated space:
 
   <code>create partition efi size=100</code>
 
@@ -68,11 +68,11 @@
 
   exit
 
-- 4. Use the command below to copy the boot files from the Windows partition to the EFI system partition and create the BCD store in it:
+- 4 : Use the command below to copy the boot files from the Windows partition to the EFI system partition and create the BCD store in it:
 
   <code>bcdboot C:\windows /s S</code>: (“C” is the drive letter of the system partition and “S” is the drive letter you assign to the EFI partition.)
 
   exit
   
 
- - 5. Restart your computer
+ - 5: Restart your computer
