@@ -76,3 +76,17 @@
   
 
  - 5: Restart your computer
+
+
+# Fix Freezes When Transferring Files :-
+- immediately
+    ```
+    sudo echo $((16*1024*1024)) | sudo tee /proc/sys/vm/dirty_background_bytes && \
+     sudo echo $((16*1024*1024)) | sudo tee /proc/sys/vm/dirty_bytes
+    ```
+- To resolve This issue across reboots, you may wish to add this to your  <code>/etc/rc.local</code> file
+    ```
+    echo $((16*1024*1024)) | sudo tee /proc/sys/vm/dirty_background_bytes
+    echo $((16*1024*1024)) | sudo tee /proc/sys/vm/dirty_bytes
+     ```
+
