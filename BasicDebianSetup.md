@@ -1,7 +1,3 @@
-file location:- E:\Debian11Os
-
-[//]: <> ( comment)
-
 # install Basic For DWM
 1.  <span style="color: red "><b>Install Basic Libraries And Programs for DWM</b></span>
     
