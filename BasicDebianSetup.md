@@ -171,7 +171,7 @@
     Pulseaudio, in its default configuration, will likely want exclusive access to the hardware. It will therefore skip devices already in use by other applications, eg. web browsers and volume control applets. lsof /dev/snd/* will help identify processes you may need to kill off before PulseAudio will use your audio device.
 
 -----------------------------------------------------------------
-# Install Intel Drivers :
+# <span style="color: red "><b>Install Intel Drivers :</b></span>
 - <b>Document Link : </b><https://wiki.debian.org/GraphicsCard#Intel>
 - Debian 11 "Bullseye"
     <p>If your graphic card was manufactured in 2007 and newer
@@ -182,7 +182,7 @@
     ```
 
 ------------------------------------------------------------------
-# Install Nvidia Drivers :
+# <span style="color: red "><b>Install Nvidia Drivers :</b></span>
 - <b>Document Link : </b><https://wiki.debian.org/NvidiaGraphicsDrivers#bullseye-470>
 - <p>Debian 11 "Bullseye"</p>
     Version 470.103.01
