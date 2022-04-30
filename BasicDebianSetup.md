@@ -119,7 +119,7 @@
 
 ----------------------------------------------------------------
 
-##  <span style="color: red "><b>Install & Setup Audio Driver :</b></span>
+#  <span style="color: red "><b>Install & Setup Audio Driver :</b></span>
 0. <b>Document Link : </b><https://wiki.debian.org/PulseAudio#Installing_PulseAudio>
 1. <span style="color: red "><b>Install <code>Pulse Audio</code> with Alsa as core Linux sound Architecture </b></span>
 
