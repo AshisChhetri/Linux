@@ -1,10 +1,24 @@
-# install Basic For DWM
+# <b>Install Basic For DWM</b>
 1.  <span style="color: red "><b>Install Basic Libraries And Programs for DWM</b></span>
-    
-        Run setup_for_dwm.sh
 
-##  <span style="color: red "><b>Install & Setup Network (Wifi) Driver :</b></span>
-<b>Document Link : </b><https://wiki.debian.org/WiFi/HowToUse#wpa_supplicant>
+    Run setup_for_dwm.sh
+
+    ```
+    sudo sh ./setup_for_dwm.sh
+    ```
+
+----------------------------------------------------------------------
+
+# <span style="color: red "><b>Install & Setup Network (Wifi) Driver :</b></span>
+
+0. <b>Document Link : </b><https://wiki.debian.org/WiFi/HowToUse#wpa_supplicant>
+
+    <span style="color: yellow "><b>There is Two (2) Options/Methods to Setup....</b></span>
+    
+    ## i. <code><b>fireware-iwlwifi</b></code>   </br>
+    ## ii. <code><b>NetworkManager</b></code>
+    
+
 1. <span style="color: red "><b>Using <code>Firmware-iwlwifi</code></b></span>
 
     <b><span style="color: yellow ">a.</span> Install firmware-iwlwifi & wpasupplicant</b>
@@ -83,7 +97,7 @@
     sudo systemctl status NetworkManager
     ```
 
-- <span style="color: red "><b>Connect to available network using <code>nmcli</code></b></span>
+    <span style="color: red "><b>Connect to available network using <code>nmcli</code></b></span>
 
     a.  <b>View System Available Network Driver</b>
     ```
@@ -102,3 +116,56 @@
     ```
     nmcli d wifi connect "ssid" password --your-password
     ```
+
+----------------------------------------------------------------
+
+##  <span style="color: red "><b>Install & Setup Audio Driver :</b></span>
+0. <b>Document Link : </b><https://wiki.debian.org/PulseAudio#Installing_PulseAudio>
+1. <span style="color: red "><b>Install <code>Pulse Audio</code> with Alsa as core Linux sound Architecture </b></span>
+
+    <b><span style="color: yellow ">a.</span> Install <code>pulseaudio</code> & for GUI control <code>pavucontrol</code></b>
+    ```
+    sudo apt install pulseaudio pavucontrol
+
+    ```
+    <b><span style="color: yellow ">b.</span>  Restarting the Pulseaudio Daemon</b>
+
+    To reread the config files <code>~/.config/pulse/daemon.conf</code> and <code>/etc/pulse/daemon.conf</code>, one can restart pulse:
+        
+    ```
+    $ systemctl --user restart pulseaudio.service
+    ```
+
+    Or on systems that do not use systemd (including Debian 8 and earlier):
+
+    ```
+    $ pulseaudio --kill
+    $ pulseaudio --start
+    ```
+
+    <b><span style="color: yellow ">c.</span> Interrupting play in Amarok when running Skype</b>
+
+    Comment out or remove the line in the <code>/etc/pulse/default.pa</code>
+
+    ```
+    load-module module-cork-music-on-phone
+    ```
+
+    <b><span style="color: yellow ">c.</span> Sound level is low or suddenly becomes too loud</b>
+
+    Add a line to <code>/etc/pulse/daemon.conf</code>:
+
+    ```
+    flat-volumes = no
+    ```
+
+    <b><span style="color: yellow ">c.</span> Missing playback devices or audio capture</b>
+
+    If Pulseaudio does not correctly detect your input / output devices ("sources" and "sinks" in Pulseaudio parlance), you can try deleting the configuration files and restarting pulseaudio. This is probably unnecessary overkill, but might help some people.
+
+    ```
+    $ rm -r ~/.config/pulse /tmp/pulse-*
+    $ systemctl --user restart pulseaudio.service
+    ```
+
+    Pulseaudio, in its default configuration, will likely want exclusive access to the hardware. It will therefore skip devices already in use by other applications, eg. web browsers and volume control applets. lsof /dev/snd/* will help identify processes you may need to kill off before PulseAudio will use your audio device.
