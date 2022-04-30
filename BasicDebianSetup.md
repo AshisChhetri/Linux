@@ -169,3 +169,45 @@
     ```
 
     Pulseaudio, in its default configuration, will likely want exclusive access to the hardware. It will therefore skip devices already in use by other applications, eg. web browsers and volume control applets. lsof /dev/snd/* will help identify processes you may need to kill off before PulseAudio will use your audio device.
+
+-----------------------------------------------------------------
+# Install Intel Drivers :
+- <b>Document Link : </b><https://wiki.debian.org/GraphicsCard#Intel>
+- Debian 11 "Bullseye"
+    <p>If your graphic card was manufactured in 2007 and newer
+    uninstalling the <code>xserver-xorg-video-intel</code> package and use the builtin modesetting driver (<code>xserver-xorg-core</code>) instead.
+    </p>
+    ```
+    sudo apt-get install xserver-xorg-core
+    ```
+
+------------------------------------------------------------------
+# Install Nvidia Drivers :
+- <b>Document Link : </b><https://wiki.debian.org/NvidiaGraphicsDrivers#bullseye-470>
+- <p>Debian 11 "Bullseye"</p>
+    Version 470.103.01
+    For support of GeForce 600 series and newer GPUs (supported devices). For older devices, see Version 390 (legacy GPUs).
+
+    1. Add <code>"contrib"</code> and <code>"non-free"</code> components to <code>/etc/apt/sources.list</code>, for example:
+    ```
+    # Debian Bullseye
+    deb http://deb.debian.org/debian/ bullseye main contrib non-free
+    ```
+
+    2. Add bullseye-backports as an additional new line to your /etc/apt/sources.list, for example:
+    ```
+    # bullseye-backports
+    deb http://deb.debian.org/debian bullseye-backports main contrib non-free
+    ```
+
+    3. Update the list of available packages, then we can install the nvidia-driver package, plus the necessary firmware, from the backports repository:
+    ```
+    # apt update
+    # apt install -t bullseye-backports nvidia-driver firmware-misc-nonfree
+    ```
+
+    DKMS will build the nvidia module for your system, via the <code>nvidia-kernel-dkms</code> package.
+
+    - Optional : if you have SecureBoot enabled, you need to sign the resulting modules. Detailed instructions are available here.
+
+    4. Reboot your system to load the updated driver.
