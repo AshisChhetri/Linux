@@ -85,6 +85,29 @@
     sudo apt install NetworkManager
 
     ```
+
+    Enabling Interface Management
+
+    If you want NetworkManager to handle interfaces that are enabled in <code>/etc/network/interfaces</code>:
+
+    Set <code>managed=true</code> in <code>/etc/NetworkManager/NetworkManager.conf</code>.
+
+    Restart NetworkManager: 
+    ```
+    sudo service network-manager restart
+    ```
+
+    Starting with Debian 11 (bullseye), use:
+    ```
+    sudo service NetworkManager restart
+    ```
+
+    "Auto Ethernet" and "Auto eth0"
+
+    Auto Ethernet means "Select an Ethernet interface automatically"
+
+    Auto eth0 means "autoconfigure the eth0 interface". 
+
     b.  <b>Start and Enable NetworkManager</b>
     ```
     sudo systemctl start NetworkManager.service
