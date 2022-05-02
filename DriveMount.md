@@ -26,6 +26,12 @@ sudo ntfsfix /dev/nvme1n1p2       #Data Drive
 sudo ntfsfix /dev/sda2            #Media
 sudo ntfsfix /dev/sda3            #Software
 ```
+## Edit /etc/fstab :
+
+add this and change UUID with yours
+```bash
+UUID=56DA21A3DA21807B	/media/Software	ntfs-3g	rw,auto,user,fmask=0111,dmask=0000,noatime,nodiratime	0	0
+```
 
 
 ## Windows Key Menu Fix :
