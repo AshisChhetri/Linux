@@ -30,7 +30,7 @@ sudo ntfsfix /dev/sda3            #Software
 
 add this and change UUID with yours
 ```bash
-UUID=56DA21A3DA21807B	/media/Software	ntfs-3g	rw,auto,user,fmask=0111,dmask=0000,noatime,nodiratime	0	0
+UUID=<UUID>	/media/Software	ntfs-3g	rw,auto,user,fmask=0111,dmask=0000,noatime,nodiratime	0	0
 ```
 
 
