@@ -44,8 +44,6 @@
     <code>
     username libvirt etc...
     </code>
-    
-    </br>
     </br>
     
 3. Qemu configuration
