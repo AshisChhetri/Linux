@@ -139,6 +139,32 @@
     sudo mkinitcpio -P
     ```
 
+
+### Reattaching it to linux
+    ```
+    sudo virsh nodedev-reattach pci_0000_01_00_0
+    sudo rmmod vfio_pci vfio_pci_core vfio_iommu_type1
+    sudo modprobe -i nvidia_modeset nvidia_uvm nvidia
+    ```
+### Disable it to use in VM
+    ```
+    sudo rmmod nvidia_modeset nvidia_uvm nvidia
+    sudo modprobe -i vfio_pci vfio_pci_core vfio_iommu_type1
+    sudo virsh nodedev-detach pci_0000_01_00_0
+    ```
+
+### Add to .bashrc
+    ```
+    alias hows-my-gpu='echo "NVIDIA Dedicated Graphics" | grep "NVIDIA" && lspci -nnk | grep "NVIDIA Corporation GA107M" -A 2 | grep "Kernel driver in use" && echo "Intel Integrated Graphics" | grep "Intel" && lspci -nnk | grep "Intel.*Integrated Graphics Controller" -A 3 | grep "Kernel driver in use" && echo "Enable and disable the dedicated NVIDIA GPU with nvidia-enable and nvidia-disable"'
+    alias nvidia-enable='sudo virsh nodedev-reattach pci_0000_01_00_0 && echo "GPU reattached (now host ready)" && sudo rmmod vfio_pci vfio_pci_core vfio_iommu_type1 && echo "VFIO drivers removed" && sudo modprobe -i nvidia_modeset nvidia_uvm nvidia && echo "NVIDIA drivers added" && echo "COMPLETED!"'
+    alias nvidia-disable='sudo rmmod nvidia_modeset nvidia_uvm nvidia && echo "NVIDIA drivers removed" && sudo modprobe -i vfio_pci vfio_pci_core vfio_iommu_type1 && echo "VFIO drivers added" && sudo virsh nodedev-detach pci_0000_01_00_0 && echo "GPU detached (now vfio ready)" && echo "COMPLETED!"'
+    ```
+
+
+## VM Storage type and address
+In the config window for your VM, open the XML tab for the storage device and change the bus type from sata to “virtio” and the address to “pci”. When you click “Apply” it should look like this 
+
+
 ## Share mouse and Keyboard
 1. to get ID's
     ```
