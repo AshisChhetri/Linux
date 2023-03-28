@@ -123,6 +123,17 @@
     FILES=()
     HOOKS=(base udev autodetect keyboard keymap modconf block filesystems fsck)
     ```
+    OR
+    
+    skip ( 'e' & 'f' ) and
+
+    ```
+    sudo vim /etc/modprobe.d/local.conf
+    ```
+    add line:
+    ```
+    add_drivers+=" vfio vfio_iommu_type1 vfio_pci vfio_virqfd "
+    ```
     g. Generate initramfs
     ```
     sudo mkinitcpio -P
