@@ -91,13 +91,10 @@
     #pci-stub.ids=10de:2191,10de:1aeb,10de:1aec,10de:1aed rd.driver.pre=vfio-pci"
 
     ```
-    (New)
-    ```sh
-    intel_iommu=on iommu=pt rd.driver.pre=vfio-pci rd.driver.blacklist=nouveau modprobe.blacklist=nouveau nvidia-drm.modeset=1 vfio-pci.ids=10de:2191,10de:1aeb module_blacklist=nouveau
-    ```
+    
     d. Regenerate grub config.
     ```sh
-    sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    grub-mkconfig -o /boot/grub/grub.cfg
     ```
 
     e. create new file
@@ -123,41 +120,27 @@
     FILES=()
     HOOKS=(base udev autodetect keyboard keymap modconf block filesystems fsck)
     ```
-    OR
-    
-    skip ( 'e' & 'f' ) and
+  
+   > booster
 
+    Similar to mkinitcpio you need to specify modules to load early:
     ```
-    sudo vim /etc/modprobe.d/local.conf
+    $sudo vim /etc/booster.yaml
+    
+    modules_force_load: vfio_pci,vfio,vfio_iommu_type1,vfio_virqfd
     ```
-    add line:
+    >dracut
+    
+    Following the same idea, we need to ensure all vfio drivers are in the initramfs. Add the following file to:
+    ``` 
+    $sudo vim /etc/dracut.conf.d/10-vfio.conf
+
+    force_drivers+=" vfio_pci vfio vfio_iommu_type1 vfio_virqfd "
     ```
-    add_drivers+=" vfio vfio_iommu_type1 vfio_pci vfio_virqfd "
-    ```
+
     g. Generate initramfs
     ```
     sudo mkinitcpio -P
-    ```
-
-
-### Reattaching it to linux
-    ```
-    sudo virsh nodedev-reattach pci_0000_01_00_0
-    sudo rmmod vfio_pci vfio_pci_core vfio_iommu_type1
-    sudo modprobe -i nvidia_modeset nvidia_uvm nvidia
-    ```
-### Disable it to use in VM
-    ```
-    sudo rmmod nvidia_modeset nvidia_uvm nvidia
-    sudo modprobe -i vfio_pci vfio_pci_core vfio_iommu_type1
-    sudo virsh nodedev-detach pci_0000_01_00_0
-    ```
-
-### Add to .bashrc
-    ```
-    alias hows-my-gpu='echo "NVIDIA Dedicated Graphics" | grep "NVIDIA" && lspci -nnk | grep "NVIDIA Corporation GA107M" -A 2 | grep "Kernel driver in use" && echo "Intel Integrated Graphics" | grep "Intel" && lspci -nnk | grep "Intel.*Integrated Graphics Controller" -A 3 | grep "Kernel driver in use" && echo "Enable and disable the dedicated NVIDIA GPU with nvidia-enable and nvidia-disable"'
-    alias nvidia-enable='sudo virsh nodedev-reattach pci_0000_01_00_0 && echo "GPU reattached (now host ready)" && sudo rmmod vfio_pci vfio_pci_core vfio_iommu_type1 && echo "VFIO drivers removed" && sudo modprobe -i nvidia_modeset nvidia_uvm nvidia && echo "NVIDIA drivers added" && echo "COMPLETED!"'
-    alias nvidia-disable='sudo rmmod nvidia_modeset nvidia_uvm nvidia && echo "NVIDIA drivers removed" && sudo modprobe -i vfio_pci vfio_pci_core vfio_iommu_type1 && echo "VFIO drivers added" && sudo virsh nodedev-detach pci_0000_01_00_0 && echo "GPU detached (now vfio ready)" && echo "COMPLETED!"'
     ```
 
 
