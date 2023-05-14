@@ -35,11 +35,6 @@
     ```
     sudo usermod -a -G kvm,libvirt $(whoami)
     ```
-    2) method
-    ```
-    sudo usermod -a -G livvirt-qemu ashisthapa
-    ```
-    
      2.4 enable and start libvirt service
     ```
     sudo systemctl enable libvirtd
