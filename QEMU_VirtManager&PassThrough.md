@@ -9,6 +9,12 @@
     libvirt dnsmasq dmidecode ebtables virt-install \
     virt-manager bridge-utils
     ```
+    2) method
+    ```
+    sudo pacman -S qemu libvirt edk2-ovmf virt-manager virt-viewer swtpm  dnsmasq
+    
+    // iptables-nft
+    ```
 
 2. Configuration of libvirt and Virtual Machine Manager 
 
@@ -29,6 +35,11 @@
     ```
     sudo usermod -a -G kvm,libvirt $(whoami)
     ```
+    2) method
+    ```
+    sudo usermod -a -G livvirt-qemu ashisthapa
+    ```
+    
      2.4 enable and start libvirt service
     ```
     sudo systemctl enable libvirtd
