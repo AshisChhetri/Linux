@@ -30,8 +30,24 @@ sudo ntfsfix /dev/sda3            #Software
 
 add this and change UUID with yours
 ```bash
-UUID=<UUID>	/media/Software	ntfs-3g	rw,auto,user,fmask=0111,dmask=0000,noatime,nodiratime	0	0
-UUID /media/software ntfs nosuid,nodev,nofail,x-gvfs-show,nobootwait,
+# user Drive
+# Workspace
+UUID=2EF43160F4312C09 /mnt/Workspace ntfs rw,fmask=0111,dmask=0000,noatime,nofail,nobootwait,x-gvfs-show,nodiratime 0 0
+
+# Other
+
+UUID=08602DAD602DA284 /mnt/Other ntfs rw,fmask=0111,dmask=0000,noatime,nofail,nobootwait,x-gvfs-show,nodiratime 0 0
+
+# Software
+UUID=56DA21A3DA21807B /mnt/Software ntfs rw,fmask=0111,dmask=0000,noatime,nofail,nobootwait,x-gvfs-show,nodiratime 0 0
+# Media
+UUID=BA9AE0AE9AE067F9 /mnt/Media ntfs rw,fmask=0111,dmask=0000,noatime,nofail,nobootwait,x-gvfs-show,nodiratime 0 0
+```
+
+## Change permission :
+```
+sudo chown -R ashisthapa:ashisthapa /mnt/Workspace
+sudo chmod -R 755 /mnt/Workspace
 ```
 
 
