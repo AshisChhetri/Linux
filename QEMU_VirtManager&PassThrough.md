@@ -201,8 +201,8 @@ In the config window for your VM, open the XML tab for the storage device and ch
 
 
 ## win10 VM xml file..
-    ```
-    <domain type="kvm">
+```
+<domain type="kvm">
   <name>win10-base</name>
   <uuid>ae3d8fac-2d39-452e-a00e-1187a85c673a</uuid>
   <metadata>
@@ -405,4 +405,4 @@ In the config window for your VM, open the XML tab for the storage device and ch
   </devices>
 </domain>
 
-    ```
+```
