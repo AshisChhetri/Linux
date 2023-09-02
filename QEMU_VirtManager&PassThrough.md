@@ -171,6 +171,12 @@ In the config window for your VM, open the XML tab for the storage device and ch
     <source dev="/dev/input/by-id/usb-Logitech_USB_Keyboard-event-kbd" grab="all" grabToggle="ctrl-ctrl" repeat="on"/>
     </input>
 
+    # Royal Kludge
+    <input type="evdev">
+    <source dev="/dev/input/by-id/usb-SINO_WEALTH_RK_Bluetooth_Keyboard-event-kbd" grab="all" grabToggle="ctrl-ctrl" repeat="on"/>
+    </input>
+    
+    
     ```
     This add function to switch mouse and keyboard control b/w VM and Host System.
 
