@@ -175,6 +175,12 @@ In the config window for your VM, open the XML tab for the storage device and ch
     <input type="evdev">
     <source dev="/dev/input/by-id/usb-SINO_WEALTH_RK_Bluetooth_Keyboard-event-kbd" grab="all" grabToggle="ctrl-ctrl" repeat="on"/>
     </input>
+
+
+    # wireless id
+    <input type="evdev">
+    <source dev="/dev/input/by-id/usb-Compx_2.4G_Wireless_Receiver-event-kbd" grab="all" grabToggle="ctrl-ctrl" repeat="on"/>
+    </input>
     
     
     ```
