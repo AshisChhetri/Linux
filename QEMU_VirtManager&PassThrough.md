@@ -215,8 +215,8 @@ In the config window for your VM, open the XML tab for the storage device and ch
 ## win10 VM xml file..
 ```
 <domain type="kvm">
-  <name>win10-base</name>
-  <uuid>ae3d8fac-2d39-452e-a00e-1187a85c673a</uuid>
+  <name>win10-test</name>
+  <uuid>b5b2cf11-de66-4a88-a77a-a59c984b4818</uuid>
   <metadata>
     <libosinfo:libosinfo xmlns:libosinfo="http://libosinfo.org/xmlns/libvirt/domain/1.0">
       <libosinfo:os id="http://microsoft.com/win/10"/>
@@ -224,7 +224,7 @@ In the config window for your VM, open the XML tab for the storage device and ch
   </metadata>
   <memory unit="KiB">8388608</memory>
   <currentMemory unit="KiB">8388608</currentMemory>
-  <vcpu placement="static">10</vcpu>
+  <vcpu placement="static">12</vcpu>
   <os firmware="efi">
     <type arch="x86_64" machine="pc-q35-8.1">hvm</type>
     <firmware>
@@ -232,8 +232,7 @@ In the config window for your VM, open the XML tab for the storage device and ch
       <feature enabled="no" name="secure-boot"/>
     </firmware>
     <loader readonly="yes" type="pflash">/usr/share/edk2/x64/OVMF_CODE.fd</loader>
-    <nvram template="/usr/share/edk2/x64/OVMF_VARS.fd">/var/lib/libvirt/qemu/nvram/win10-base_VARS.fd</nvram>
-    <bootmenu enable="yes"/>
+    <nvram template="/usr/share/edk2/x64/OVMF_VARS.fd">/var/lib/libvirt/qemu/nvram/win10-test_VARS.fd</nvram>
   </os>
   <features>
     <acpi/>
@@ -242,15 +241,11 @@ In the config window for your VM, open the XML tab for the storage device and ch
       <relaxed state="on"/>
       <vapic state="on"/>
       <spinlocks state="on" retries="8191"/>
-      <vendor_id state="on" value="randomid"/>
     </hyperv>
-    <kvm>
-      <hidden state="on"/>
-    </kvm>
     <vmport state="off"/>
   </features>
   <cpu mode="host-passthrough" check="none" migratable="on">
-    <topology sockets="1" dies="1" cores="2" threads="5"/>
+    <topology sockets="1" dies="1" cores="2" threads="6"/>
   </cpu>
   <clock offset="localtime">
     <timer name="rtc" tickpolicy="catchup"/>
@@ -269,13 +264,20 @@ In the config window for your VM, open the XML tab for the storage device and ch
     <emulator>/usr/bin/qemu-system-x86_64</emulator>
     <disk type="file" device="disk">
       <driver name="qemu" type="qcow2" discard="unmap"/>
-      <source file="/var/lib/libvirt/images/win10-base-1.qcow2"/>
+      <source file="/var/lib/libvirt/images/win10-test.qcow2"/>
       <target dev="vda" bus="virtio"/>
       <boot order="2"/>
+      <address type="pci" domain="0x0000" bus="0x03" slot="0x00" function="0x0"/>
+    </disk>
+    <disk type="block" device="disk">
+      <driver name="qemu" type="raw" cache="none" io="native" discard="unmap"/>
+      <source dev="/dev/sda4"/>
+      <target dev="vdb" bus="virtio"/>
+      <boot order="3"/>
       <address type="pci" domain="0x0000" bus="0x04" slot="0x00" function="0x0"/>
     </disk>
     <controller type="usb" index="0" model="qemu-xhci" ports="15">
-      <address type="pci" domain="0x0000" bus="0x02" slot="0x00" function="0x0"/>
+      <address type="pci" domain="0x0000" bus="0x01" slot="0x00" function="0x0"/>
     </controller>
     <controller type="pci" index="0" model="pcie-root"/>
     <controller type="pci" index="1" model="pcie-root-port">
@@ -348,17 +350,26 @@ In the config window for your VM, open the XML tab for the storage device and ch
       <target chassis="14" port="0x1d"/>
       <address type="pci" domain="0x0000" bus="0x00" slot="0x03" function="0x5"/>
     </controller>
+    <controller type="pci" index="15" model="pcie-root-port">
+      <model name="pcie-root-port"/>
+      <target chassis="15" port="0x1e"/>
+      <address type="pci" domain="0x0000" bus="0x00" slot="0x03" function="0x6"/>
+    </controller>
+    <controller type="pci" index="16" model="pcie-to-pci-bridge">
+      <model name="pcie-pci-bridge"/>
+      <address type="pci" domain="0x0000" bus="0x06" slot="0x00" function="0x0"/>
+    </controller>
     <controller type="sata" index="0">
       <address type="pci" domain="0x0000" bus="0x00" slot="0x1f" function="0x2"/>
     </controller>
     <controller type="virtio-serial" index="0">
-      <address type="pci" domain="0x0000" bus="0x03" slot="0x00" function="0x0"/>
+      <address type="pci" domain="0x0000" bus="0x02" slot="0x00" function="0x0"/>
     </controller>
     <interface type="network">
-      <mac address="52:54:00:bf:2e:16"/>
+      <mac address="52:54:00:e8:d6:a5"/>
       <source network="default"/>
       <model type="e1000e"/>
-      <address type="pci" domain="0x0000" bus="0x07" slot="0x00" function="0x0"/>
+      <address type="pci" domain="0x0000" bus="0x09" slot="0x00" function="0x0"/>
     </interface>
     <serial type="pty">
       <target type="isa-serial" port="0">
@@ -377,32 +388,35 @@ In the config window for your VM, open the XML tab for the storage device and ch
     </input>
     <input type="mouse" bus="ps2"/>
     <input type="keyboard" bus="ps2"/>
+    <input type="evdev">
+      <source dev="/dev/input/by-id/usb-Logitech_G102_Prodigy_Gaming_Mouse_1068385D3734-event-mouse"/>
+    </input>
+    <input type="evdev">
+      <source dev="/dev/input/by-id/usb-Compx_2.4G_Wireless_Receiver-event-kbd" grab="all" grabToggle="ctrl-ctrl" repeat="on"/>
+    </input>
     <graphics type="spice" autoport="yes">
       <listen type="address"/>
       <image compression="off"/>
-      <gl enable="no"/>
     </graphics>
     <sound model="ich9">
       <address type="pci" domain="0x0000" bus="0x00" slot="0x1b" function="0x0"/>
     </sound>
     <audio id="1" type="spice"/>
     <video>
-      <model type="virtio" heads="1" primary="yes">
-        <acceleration accel3d="no"/>
-      </model>
+      <model type="qxl" ram="65536" vram="65536" vgamem="16384" heads="1" primary="yes"/>
       <address type="pci" domain="0x0000" bus="0x00" slot="0x01" function="0x0"/>
     </video>
     <hostdev mode="subsystem" type="pci" managed="yes">
       <source>
-        <address domain="0x0000" bus="0x01" slot="0x00" function="0x0"/>
+        <address domain="0x0000" bus="0x01" slot="0x00" function="0x1"/>
       </source>
-      <address type="pci" domain="0x0000" bus="0x01" slot="0x00" function="0x0"/>
+      <address type="pci" domain="0x0000" bus="0x07" slot="0x00" function="0x0"/>
     </hostdev>
     <hostdev mode="subsystem" type="pci" managed="yes">
       <source>
-        <address domain="0x0000" bus="0x01" slot="0x00" function="0x1"/>
+        <address domain="0x0000" bus="0x01" slot="0x00" function="0x0"/>
       </source>
-      <address type="pci" domain="0x0000" bus="0x06" slot="0x00" function="0x0"/>
+      <address type="pci" domain="0x0000" bus="0x08" slot="0x00" function="0x0"/>
     </hostdev>
     <redirdev bus="usb" type="spicevmc">
       <address type="usb" bus="0" port="2"/>
@@ -411,10 +425,14 @@ In the config window for your VM, open the XML tab for the storage device and ch
       <address type="usb" bus="0" port="3"/>
     </redirdev>
     <watchdog model="itco" action="reset"/>
-    <memballoon model="virtio">
-      <address type="pci" domain="0x0000" bus="0x05" slot="0x00" function="0x0"/>
-    </memballoon>
+    <memballoon model="none"/>
+    <shmem name="looking-glass">
+      <model type="ivshmem-plain"/>
+      <size unit="M">64</size>
+      <address type="pci" domain="0x0000" bus="0x10" slot="0x01" function="0x0"/>
+    </shmem>
   </devices>
 </domain>
+
 
 ```
