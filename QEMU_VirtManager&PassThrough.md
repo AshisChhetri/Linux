@@ -203,10 +203,25 @@ In the config window for your VM, open the XML tab for the storage device and ch
       <address type="pci" domain="0x0000" bus="0x10" slot="0x01" function="0x0"/>
     </shmem>
     ```
-    
-3. Install looking-glass for in windows system.
 
-4. run looking-glass client using command.
+3. Next create a configuration file to create the shared memory file on boot. 
+   ```
+   sudo vim /etc/tmpfiles.d/10-looking-glass.conf
+   ```
+   added in file
+   ```
+   f	/dev/shm/looking-glass	0660	ashisthapa	kvm	-
+   ```
+   Ask systemd-tmpfiles to create the shared memory file now without waiting to next boot
+   ```
+   # systemd-tmpfiles --create /etc/tmpfiles.d/10-looking-glass.conf
+   ```
+
+
+    
+4. Install looking-glass for in windows system.
+
+5. run looking-glass client using command.
     ```
     looking-glass-client
     ```
