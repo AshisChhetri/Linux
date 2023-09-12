@@ -1,0 +1,152 @@
+{
+  "main": {
+    "id": "4f153f606293a2ce",
+    "type": "split",
+    "children": [
+      {
+        "id": "cccba7d3a70afc69",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ed65ab0ee5faafeb",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "f35cf71ee5d628b5",
+    "type": "split",
+    "children": [
+      {
+        "id": "a8736ed65e9dfd4d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2dc4456a2d0eff5e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "5be03d3ccdf3357c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "09d5559eaf640d35",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "47e7507002d7bc91",
+    "type": "split",
+    "children": [
+      {
+        "id": "71752a849c4aebad",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "13671df74a8942eb",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "0cf8c1d343f37df7",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "97e67287a51e3240",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "d65adbee9fe8155e",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "ed65ab0ee5faafeb",
+  "lastOpenFiles": [
+    "LinuxSoftInstall.md",
+    "LinuxDevProg.md",
+    "DriveMount.md",
+    "Linux_Arch Setup RDP and Looking Glass...md",
+    "QEMU_VirtManager&PassThrough.md",
+    "ErrorFix.md",
+    "README.md",
+    "BasicDebianSetup.md"
+  ]
+}
