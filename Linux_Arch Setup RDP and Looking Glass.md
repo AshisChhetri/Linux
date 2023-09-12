@@ -18,6 +18,15 @@ Here,
 /u : enter windows user name.
 /p : enter windows user password.
 
+### Autorun  Script
+```
+#!/bin/bash
+virsh --connect qemu:///system start win10-test
+sleep 30
+xfreerdp -grab-keyboard /v:yourIP /u:yourname /p:yourpassword /size:100% /d: /dynamic-resolution /gfx-h264:avc444 +gfx-progressive 
+```
+
+
 ________________________________________________________________________
 ## Looking Glass setup
 
