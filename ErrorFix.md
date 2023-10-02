@@ -1,3 +1,10 @@
+- # Fix flatpak Telegram home folder location access
+    ```
+    flatpak override --filesystem=home org.telegram.desktop
+    ```
+
+
+
 #   Fix Kali linux Audio mute on boot issues....
 -  <b>Goto <code>/etc/pulse/daemon.conf</code> Change to <code></code></b>
     ```
