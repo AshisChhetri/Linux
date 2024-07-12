@@ -1,3 +1,21 @@
+# Update Archinstall Script
+```
+# update archinstall script
+sudo pacman -Sy archinstall
+
+```
+>> Install archlinux-keyrin
+```
+# install archlinux-keyring
+sudo pacman -S archlinux-keyring
+```
+>> Populate archlinux
+```
+pacman-key --init
+pacman-key --populate archlin
+```
+
+
 
 # 1.To Mount NTFS Drive with read/write Permission
 
