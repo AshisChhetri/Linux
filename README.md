@@ -12,7 +12,7 @@ sudo pacman -S archlinux-keyring
 >> Populate archlinux
 ```
 pacman-key --init
-pacman-key --populate archlin
+pacman-key --populate archlinux
 ```
 
 
